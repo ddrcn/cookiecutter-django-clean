@@ -17,7 +17,7 @@ def create_template_structure():
 class {{cookiecutter.app_name|capitalize}}Config(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     name = "apps.{{cookiecutter.app_name}}"
-    verbose_name = "{{app_description}}"
+    verbose_name = "{{cookiecutter.app_description}}"
 """,
         "urls.py.jinja": """from django.urls import path
 from .views.web.example import {{cookiecutter.app_name|capitalize}}ExampleView
