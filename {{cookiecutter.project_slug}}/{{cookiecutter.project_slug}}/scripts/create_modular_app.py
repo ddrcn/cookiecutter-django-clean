@@ -11,15 +11,15 @@ def create_template_structure():
     
     # Основные файлы приложения
     files = {
-        "__init__.py.jinja": "",
-        "apps.py.jinja": """from django.apps import AppConfig
+        "__init__.py": "",
+        "apps.py": """from django.apps import AppConfig
 
 class {{cookiecutter.app_name|capitalize}}Config(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     name = "apps.{{cookiecutter.app_name}}"
     verbose_name = "{{cookiecutter.app_description}}"
 """,
-        "urls.py.jinja": """from django.urls import path
+        "urls.py": """from django.urls import path
 from .views.web.example import {{cookiecutter.app_name|capitalize}}ExampleView
 
 app_name = "{{cookiecutter.app_name}}"
@@ -27,7 +27,7 @@ urlpatterns = [
     path("", {{cookiecutter.app_name|capitalize}}ExampleView.as_view(), name="example"),
 ]
 """,
-        "admin.py.jinja": """from django.contrib import admin
+        "admin.py": """from django.contrib import admin
 from .models.example import {{cookiecutter.app_name|capitalize}}Example
 
 admin.site.register({{cookiecutter.app_name|capitalize}}Example)
@@ -37,8 +37,8 @@ admin.site.register({{cookiecutter.app_name|capitalize}}Example)
     # Поддиректории и их содержимое
     subdirs = {
         "models": {
-            "__init__.py.jinja": "",
-            "example.py.jinja": """from django.db import models
+            "__init__.py": "",
+            "example.py": """from django.db import models
 from core.models.base import TimeStampedModel
 
 class {{cookiecutter.app_name|capitalize}}Example(TimeStampedModel):
@@ -50,13 +50,13 @@ class {{cookiecutter.app_name|capitalize}}Example(TimeStampedModel):
 """
         },
         "services": {
-            "__init__.py.jinja": ""
+            "__init__.py": ""
         },
         "views": {
-            "__init__.py.jinja": "",
+            "__init__.py": "",
             "web": {
-                "__init__.py.jinja": "",
-                "example.py.jinja": """from django.views import View
+                "__init__.py": "",
+                "example.py": """from django.views import View
 from django.shortcuts import render
 
 class {{cookiecutter.app_name|capitalize}}ExampleView(View):
@@ -66,8 +66,8 @@ class {{cookiecutter.app_name|capitalize}}ExampleView(View):
 """
             },
             "api": {
-                "__init__.py.jinja": "",
-                "example.py.jinja": """from django.http import JsonResponse
+                "__init__.py": "",
+                "example.py": """from django.http import JsonResponse
 from django.views import View
 
 class {{cookiecutter.app_name|capitalize}}ApiView(View):
@@ -79,7 +79,7 @@ class {{cookiecutter.app_name|capitalize}}ApiView(View):
         },
         "templates/{{cookiecutter.app_name}}": {
             "auth": {
-                "login.html.jinja": """{% raw %}{% extends "base.html" %}
+                "login.html": """{% raw %}{% extends "base.html" %}
 
 {% block content %}
 <h1>Login for {{cookiecutter.app_name}}</h1>
@@ -88,12 +88,12 @@ class {{cookiecutter.app_name|capitalize}}ApiView(View):
 """
             },
             "partials": {
-                "__init__.py.jinja": ""
+                "__init__.py": ""
             }
         },
         "tests": {
-            "__init__.py.jinja": "",
-            "test_models.py.jinja": """from django.test import TestCase
+            "__init__.py": "",
+            "test_models.py": """from django.test import TestCase
 from apps.{{cookiecutter.app_name}}.models.example import {{cookiecutter.app_name|capitalize}}Example
 
 class {{cookiecutter.app_name|capitalize}}ModelTests(TestCase):
@@ -101,7 +101,7 @@ class {{cookiecutter.app_name|capitalize}}ModelTests(TestCase):
         obj = {{cookiecutter.app_name|capitalize}}Example.objects.create(name="Test")
         self.assertEqual(str(obj), "Test")
 """,
-            "test_views.py.jinja": """from django.test import TestCase
+            "test_views.py": """from django.test import TestCase
 from django.urls import reverse
 
 class {{cookiecutter.app_name|capitalize}}ViewTests(TestCase):
