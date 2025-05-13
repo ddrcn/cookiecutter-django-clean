@@ -3,7 +3,8 @@ from cookiecutter.main import cookiecutter
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATE_DIR = BASE_DIR / "templates" / "modular_app"
+BASE_DIR_TEPLATE = Path(__file__).resolve().parent.parent.parent
+TEMPLATE_DIR = BASE_DIR_TEPLATE / "templates" / "modular_app"
 
 def create_app():
     """Генерирует приложение из шаблона."""
