@@ -14,23 +14,23 @@ def create_template_structure():
         "__init__.py.jinja": "",
         "apps.py.jinja": """from django.apps import AppConfig
 
-class {{app_name|capitalize}}Config(AppConfig):
+class {{cookiecutter.app_name|capitalize}}Config(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "apps.{{app_name}}"
+    name = "apps.{{cookiecutter.app_name}}"
     verbose_name = "{{app_description}}"
 """,
         "urls.py.jinja": """from django.urls import path
-from .views.web.example import {{app_name|capitalize}}ExampleView
+from .views.web.example import {{cookiecutter.app_name|capitalize}}ExampleView
 
-app_name = "{{app_name}}"
+app_name = "{{cookiecutter.app_name}}"
 urlpatterns = [
-    path("", {{app_name|capitalize}}ExampleView.as_view(), name="example"),
+    path("", {{cookiecutter.app_name|capitalize}}ExampleView.as_view(), name="example"),
 ]
 """,
         "admin.py.jinja": """from django.contrib import admin
-from .models.example import {{app_name|capitalize}}Example
+from .models.example import {{cookiecutter.app_name|capitalize}}Example
 
-admin.site.register({{app_name|capitalize}}Example)
+admin.site.register({{cookiecutter.app_name|capitalize}}Example)
 """
     }
 
@@ -41,8 +41,8 @@ admin.site.register({{app_name|capitalize}}Example)
             "example.py.jinja": """from django.db import models
 from core.models.base import TimeStampedModel
 
-class {{app_name|capitalize}}Example(TimeStampedModel):
-    \"\"\"Пример модели для приложения {{app_name}}.\"\"\"
+class {{cookiecutter.app_name|capitalize}}Example(TimeStampedModel):
+    \"\"\"Пример модели для приложения {{cookiecutter.app_name}}.\"\"\"
     name = models.CharField(max_length=100)
     
     def __str__(self):
@@ -59,10 +59,10 @@ class {{app_name|capitalize}}Example(TimeStampedModel):
                 "example.py.jinja": """from django.views import View
 from django.shortcuts import render
 
-class {{app_name|capitalize}}ExampleView(View):
+class {{cookiecutter.app_name|capitalize}}ExampleView(View):
     \"\"\"Пример вьюхи для Web.\"\"\"
     def get(self, request):
-        return render(request, "{{app_name}}/example.html")
+        return render(request, "{{cookiecutter.app_name}}/example.html")
 """
             },
             "api": {
@@ -70,10 +70,10 @@ class {{app_name|capitalize}}ExampleView(View):
                 "example.py.jinja": """from django.http import JsonResponse
 from django.views import View
 
-class {{app_name|capitalize}}ApiView(View):
+class {{cookiecutter.app_name|capitalize}}ApiView(View):
     \"\"\"Пример API-вьюхи.\"\"\"
     def get(self, request):
-        return JsonResponse({"message": "Hello from {{app_name}} API!"})
+        return JsonResponse({"message": "Hello from {{cookiecutter.app_name}} API!"})
 """
             }
         },
@@ -82,7 +82,7 @@ class {{app_name|capitalize}}ApiView(View):
                 "login.html.jinja": """{% extends "base.html" %}
 
 {% block content %}
-<h1>Login for {{app_name}}</h1>
+<h1>Login for {{cookiecutter.app_name}}</h1>
 {% endblock %}
 """
             },
@@ -93,19 +93,19 @@ class {{app_name|capitalize}}ApiView(View):
         "tests": {
             "__init__.py.jinja": "",
             "test_models.py.jinja": """from django.test import TestCase
-from apps.{{app_name}}.models.example import {{app_name|capitalize}}Example
+from apps.{{cookiecutter.app_name}}.models.example import {{cookiecutter.app_name|capitalize}}Example
 
-class {{app_name|capitalize}}ModelTests(TestCase):
+class {{cookiecutter.app_name|capitalize}}ModelTests(TestCase):
     def test_model_creation(self):
-        obj = {{app_name|capitalize}}Example.objects.create(name="Test")
+        obj = {{cookiecutter.app_name|capitalize}}Example.objects.create(name="Test")
         self.assertEqual(str(obj), "Test")
 """,
             "test_views.py.jinja": """from django.test import TestCase
 from django.urls import reverse
 
-class {{app_name|capitalize}}ViewTests(TestCase):
+class {{cookiecutter.app_name|capitalize}}ViewTests(TestCase):
     def test_home_view(self):
-        response = self.client.get(reverse("{{app_name}}:example"))
+        response = self.client.get(reverse("{{cookiecutter.app_name}}:example"))
         self.assertEqual(response.status_code, 200)
 """
         }
