@@ -4,7 +4,7 @@ import django.utils.timezone
 from django.db import migrations
 from django.db import models
 
-import {{cookiecutter.project_slug}}.users.models
+import {{cookiecutter.project_slug}}.apps.users.models
 
 
 class Migration(migrations.Migration):
@@ -131,7 +131,7 @@ class Migration(migrations.Migration):
             },
             managers=[
                 {%- if cookiecutter.username_type == "email" %}
-                ("objects", {{cookiecutter.project_slug}}.users.models.UserManager()),
+                ("objects", {{cookiecutter.project_slug}}.apps.users.models.UserManager()),
                 {%- else %}
                 ("objects", django.contrib.auth.models.UserManager()),
                 {%- endif %}
