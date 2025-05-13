@@ -7,7 +7,7 @@ from django.views.generic import DetailView
 from django.views.generic import RedirectView
 from django.views.generic import UpdateView
 
-from {{ cookiecutter.project_slug }}.users.models import User
+from {{ cookiecutter.project_slug }}.apps.users.models import User
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):

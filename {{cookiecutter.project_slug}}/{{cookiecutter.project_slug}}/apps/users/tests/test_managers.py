@@ -3,7 +3,7 @@ from io import StringIO
 import pytest
 from django.core.management import call_command
 
-from {{ cookiecutter.project_slug }}.users.models import User
+from {{ cookiecutter.project_slug }}.apps.users.models import User
 
 
 @pytest.mark.django_db
