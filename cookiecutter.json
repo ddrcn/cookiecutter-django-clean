@@ -44,9 +44,9 @@
   "debug": "y",
 
   "_copy_without_render": [
-    "scripts/create_modular_app.py",
-    "scripts/create_structure.py",
-    "scripts/startmodularapp.py"
+    "*/scripts/create_modular_app.py",
+    "*/scripts/create_structure.py",
+    "*/scripts/startmodularapp.py"
   ],
 
   "_output_dir": "./output"
