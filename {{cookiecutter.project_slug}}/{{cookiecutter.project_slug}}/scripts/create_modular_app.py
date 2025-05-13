@@ -2,7 +2,7 @@
 import os
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent  # Корень проекта (myproject/)
+BASE_DIR = Path(__file__).resolve().parent.parent.parent  # Корень проекта (myproject/)
 TEMPLATES_DIR = BASE_DIR / "templates" / "modular_app"
 
 def create_template_structure():
