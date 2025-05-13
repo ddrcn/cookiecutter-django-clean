@@ -79,11 +79,12 @@ class {{cookiecutter.app_name|capitalize}}ApiView(View):
         },
         "templates/{{cookiecutter.app_name}}": {
             "auth": {
-                "login.html.jinja": """{% extends "base.html" %}
+                "login.html.jinja": """{% raw %}{% extends "base.html" %}
 
 {% block content %}
 <h1>Login for {{cookiecutter.app_name}}</h1>
 {% endblock %}
+{%- endraw %}
 """
             },
             "partials": {
