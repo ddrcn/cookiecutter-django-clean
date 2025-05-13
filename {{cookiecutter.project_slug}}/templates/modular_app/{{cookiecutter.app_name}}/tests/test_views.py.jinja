@@ -1,7 +1,0 @@
-from django.test import TestCase
-from django.urls import reverse
-
-class {{app_name|capitalize}}ViewTests(TestCase):
-    def test_home_view(self):
-        response = self.client.get(reverse("{{app_name}}:example"))
-        self.assertEqual(response.status_code, 200)

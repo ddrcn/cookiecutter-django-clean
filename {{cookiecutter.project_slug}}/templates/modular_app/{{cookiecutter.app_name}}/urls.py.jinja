@@ -1,7 +1,0 @@
-from django.urls import path
-from .views.web.example import {{app_name|capitalize}}ExampleView
-
-app_name = "{{app_name}}"
-urlpatterns = [
-    path("", {{app_name|capitalize}}ExampleView.as_view(), name="example"),
-]

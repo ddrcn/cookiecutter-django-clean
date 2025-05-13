@@ -1,9 +1,0 @@
-from django.db import models
-from core.models.base import TimeStampedModel
-
-class {{app_name|capitalize}}Example(TimeStampedModel):
-    """Пример модели для приложения {{app_name}}."""
-    name = models.CharField(max_length=100)
-    
-    def __str__(self):
-        return self.name

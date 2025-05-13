@@ -7,7 +7,7 @@ TEMPLATES_DIR = BASE_DIR / "templates" / "modular_app"
 
 def create_template_structure():
     """Создает полную структуру шаблона для новых приложений"""
-    template_dir = TEMPLATES_DIR / "{{app_name}}"
+    template_dir = TEMPLATES_DIR / "{{cookiecutter.app_name}}"
     
     # Основные файлы приложения
     files = {
@@ -77,7 +77,7 @@ class {{app_name|capitalize}}ApiView(View):
 """
             }
         },
-        "templates/{{app_name}}": {
+        "templates/{{cookiecutter.app_name}}": {
             "auth": {
                 "login.html.jinja": """{% extends "base.html" %}
 

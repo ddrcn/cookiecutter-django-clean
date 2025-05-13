@@ -1,7 +1,0 @@
-from django.http import JsonResponse
-from django.views import View
-
-class {{app_name|capitalize}}ApiView(View):
-    """Пример API-вьюхи."""
-    def get(self, request):
-        return JsonResponse({"message": "Hello from {{app_name}} API!"})

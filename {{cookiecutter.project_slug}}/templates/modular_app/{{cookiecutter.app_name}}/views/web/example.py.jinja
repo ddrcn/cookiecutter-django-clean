@@ -1,7 +1,0 @@
-from django.views import View
-from django.shortcuts import render
-
-class {{app_name|capitalize}}ExampleView(View):
-    """Пример вьюхи для Web."""
-    def get(self, request):
-        return render(request, "{{app_name}}/example.html")
