@@ -1,0 +1,7 @@
+from django.test import TestCase
+from apps.{{app_name}}.models.example import {{app_name|capitalize}}Example
+
+class {{app_name|capitalize}}ModelTests(TestCase):
+    def test_model_creation(self):
+        obj = {{app_name|capitalize}}Example.objects.create(name="Test")
+        self.assertEqual(str(obj), "Test")
